@@ -1,4 +1,7 @@
 package martinez.ruben.api.service;
 
-public interface UserService {
+import martinez.ruben.api.entity.User;
+
+public interface UserService  {
+    boolean compare(User userTry);
 }
