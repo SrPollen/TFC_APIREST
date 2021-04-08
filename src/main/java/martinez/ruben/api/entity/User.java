@@ -21,8 +21,10 @@ public class User {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
+    private String name;
+    private String lastname;
     private String username;
     private String password;
     private String email;
-
+    private Integer score;
 }

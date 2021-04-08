@@ -25,8 +25,13 @@ public class UserServiceImpl implements UserService {
     }
 
     public User save(User user){
-        user.setPassword(cipher.hashCipher(user.getPassword()));
-        return this.userRepository.save(user);
+        //user.setPassword(cipher.hashCipher(user.getPassword()));
+        User userInBd = this.userRepository.findUserByName(user.getUsername());
+        if (userInBd == null){
+            user.setScore(0);
+            return this.userRepository.save(user);
+        }
+        return null;
     }
 
     public Optional<User> findById(Integer id){
@@ -38,14 +43,13 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public boolean compare(User userTry) {
+    public User compare(User userTry) {
         //User userInBd = this.userRepository.findById(userTry.getId()).orElse(null);
         User userInBd = this.userRepository.findUserByName(userTry.getUsername());
-        userTry.setPassword(cipher.hashCipher(userTry.getPassword()));
+        //userTry.setPassword(cipher.hashCipher(userTry.getPassword()));
         if(userInBd != null && userInBd.getPassword().equals(userTry.getPassword())){
-            return true;
+            return userInBd;
         }
-
-        return false;
+        return null;
     }
 }
