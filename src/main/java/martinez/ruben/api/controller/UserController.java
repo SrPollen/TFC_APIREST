@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 public class UserController {
@@ -20,6 +21,12 @@ public class UserController {
     @GetMapping("/user")
     public List<User> index(){
         return userServiceImpl.findAll();
+    }
+
+    @CrossOrigin
+    @GetMapping("/user/{id}")
+    public Optional<User> show(@PathVariable Integer id){
+        return userServiceImpl.findById(id);
     }
 
     @CrossOrigin

@@ -28,7 +28,13 @@ public class UserServiceImpl implements UserService {
         //user.setPassword(cipher.hashCipher(user.getPassword()));
         User userInBd = this.userRepository.findUserByName(user.getUsername());
         if (userInBd == null){
-            user.setScore(0);
+            user.setMaxWave(0);
+            user.setPlaytime(0);
+            user.setGames(0);
+            user.setKills(0);
+            user.setMaxKills(0);
+            user.setDamage(0);
+            user.setMaxDamage(0);
             return this.userRepository.save(user);
         }
         return null;

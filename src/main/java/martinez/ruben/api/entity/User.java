@@ -26,5 +26,12 @@ public class User {
     private String username;
     private String password;
     private String email;
-    private Integer score;
+
+    private Integer maxWave;
+    private Integer playtime;
+    private Integer games;
+    private Integer kills;
+    private Integer maxKills;
+    private Integer damage;
+    private Integer maxDamage;
 }
