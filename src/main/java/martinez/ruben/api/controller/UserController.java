@@ -30,6 +30,12 @@ public class UserController {
     }
 
     @CrossOrigin
+    @PutMapping("/update/{id}")
+    public int update(@PathVariable Integer id, @RequestBody User user){
+        return userServiceImpl.updateUser(id, user);
+    }
+
+    @CrossOrigin
     @PostMapping("/register")
     public User register(@RequestBody User user){
         return userServiceImpl.save(user);
