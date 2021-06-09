@@ -46,4 +46,22 @@ public class UserController {
     public User login(@RequestBody User user){
         return userServiceImpl.compare(user);
     }
+
+    @CrossOrigin
+    @PostMapping("/gamelogin")
+    public int gameLogin(@RequestBody User user){
+        User userBD = userServiceImpl.compare(user);
+        if(userBD != null){
+            return userBD.getId();
+        }
+        return -1;
+    }
+
+    @CrossOrigin
+    @GetMapping("/topusers")
+    public List<User> getUsersByMaxKills(){
+        return userServiceImpl.findAllOrderByMaxKills();
+    }
+
+
 }

@@ -70,8 +70,11 @@ public class UserServiceImpl implements UserService {
                 userInBd.setMaxDamage(userGame.getDamage());
             }
 
+            System.out.println("update is ok");
             return 200;
         }
+
+        System.out.println("update not ok");
         return 0;
     }
 
@@ -86,5 +89,10 @@ public class UserServiceImpl implements UserService {
         }
         System.out.println("is null");
         return null;
+    }
+
+    @Override
+    public List<User> findAllOrderByMaxKills() {
+        return this.userRepository.findAllOrderByMaxKills();
     }
 }
