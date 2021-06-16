@@ -18,12 +18,6 @@ public class UserController {
     }
 
     @CrossOrigin
-    @GetMapping("/user")
-    public List<User> index(){
-        return userServiceImpl.findAll();
-    }
-
-    @CrossOrigin
     @GetMapping("/user/{id}")
     public Optional<User> show(@PathVariable Integer id){
         return userServiceImpl.findById(id);

@@ -28,7 +28,7 @@ public class User {
     private String email;
 
     private Integer maxWave;
-    private Integer playtime;
+    private float playtime;
     private Integer games;
     private Integer kills;
     private Integer maxKills;

@@ -70,7 +70,7 @@ public class UserServiceImpl implements UserService {
                 userInBd.setMaxDamage(userGame.getDamage());
             }
 
-            System.out.println("update is ok");
+            System.out.println("update ok");
             return 200;
         }
 
@@ -80,14 +80,13 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User compare(User userTry) {
-        //User userInBd = this.userRepository.findById(userTry.getId()).orElse(null);
         User userInBd = this.userRepository.findUserByName(userTry.getUsername());
         userTry.setPassword(cipher.hashCipher(userTry.getPassword()));
         if (userInBd != null && userInBd.getPassword().equals(userTry.getPassword())) {
-            System.out.println("not null");
+            System.out.println("User founded");
             return userInBd;
         }
-        System.out.println("is null");
+        System.out.println("User not found");
         return null;
     }
 
